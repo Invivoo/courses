@@ -21,7 +21,7 @@ public class BookController {
     private AccountService accountService;
 
     @GetMapping(value = "/books")
-    public List<Book> listTasks() {
+    public List<Book> listBooks() {
 
         return this.bookService.listTasks();
     }
