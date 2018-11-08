@@ -1,6 +1,7 @@
 package com.example.book.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().frameOptions().disable();
         http.formLogin();
+        http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll();
         http.authorizeRequests().antMatchers("/login/**").permitAll();
         http.authorizeRequests().antMatchers("/console/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN");
