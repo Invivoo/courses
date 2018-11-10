@@ -2,6 +2,8 @@ package com.invivoo.catalog.interfaces;
 
 import com.invivoo.catalog.domain.product.Product;
 import com.invivoo.catalog.domain.product.ProductRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,17 +24,20 @@ import java.util.Optional;
 @RequestMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
 
+    private final static Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     private ProductRepository productRepository;
 
     @GetMapping
     public ResponseEntity<List<Product>> getAll() {
+        logger.debug("GET products");
         return ResponseEntity.ok(productRepository.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> get(@PathVariable Long id) {
+        logger.debug("GET products/{}", id);
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (!optionalProduct.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -42,12 +47,14 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> post(@RequestBody Product product) {
+        logger.debug("POST products/{}", product);
         productRepository.save(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity put(@RequestBody Product product) {
+        logger.debug("PUT products/{}", product);
         Long productId = product.getId();
         if (productId == null || productDoesNotExistsById(productId)) {
             return ResponseEntity.notFound().build();
@@ -58,6 +65,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Long id) {
+        logger.debug("DELETE products/{}", id);
         if (productDoesNotExistsById(id)) {
             return ResponseEntity.notFound().build();
         }

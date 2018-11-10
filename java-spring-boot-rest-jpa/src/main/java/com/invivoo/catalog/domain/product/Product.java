@@ -91,4 +91,17 @@ public class Product {
     public void setHref(String href) {
         this.href = href;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+               "id=" + id +
+               ", name='" + name + '\'' +
+               ", description='" + description + '\'' +
+               ", studentId=" + studentId +
+               ", quantity=" + quantity +
+               ", unitPrice=" + unitPrice +
+               ", href='" + href + '\'' +
+               '}';
+    }
 }

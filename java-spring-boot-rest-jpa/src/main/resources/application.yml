@@ -1,0 +1,19 @@
+server:
+  port: 9000
+app:
+  name: Invivoo Products Catalog
+  description: ${app.name} is a spring boot app that demonstrates how to use use Spring Boot to create a simple web service
+
+---
+spring:
+  profiles: log-debug
+logging.level.root: INFO
+logging.level.com.invivoo: DEBUG
+logging.level.org.springframework.web: WARN
+logging.level.org.hibernate.SQL: INFO
+
+---
+spring:
+  profiles: development
+server:
+  port: 9001
