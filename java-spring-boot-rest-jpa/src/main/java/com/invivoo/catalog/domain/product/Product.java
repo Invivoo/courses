@@ -16,7 +16,7 @@ public class Product {
 
     private String description;
 
-    private Long studentId;
+    private Long employeeId;
 
     private int quantity;
 
@@ -27,10 +27,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, Long studentId, int quantity, BigDecimal unitPrice, String href) {
+    public Product(String name, String description, Long employeeId, int quantity, BigDecimal unitPrice, String href) {
         this.name = name;
         this.description = description;
-        this.studentId = studentId;
+        this.employeeId = employeeId;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.href = href;
@@ -60,12 +60,12 @@ public class Product {
         this.description = description;
     }
 
-    public Long getStudentId() {
-        return studentId;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public int getQuantity() {
@@ -98,7 +98,7 @@ public class Product {
                "id=" + id +
                ", name='" + name + '\'' +
                ", description='" + description + '\'' +
-               ", studentId=" + studentId +
+               ", employeeId=" + employeeId +
                ", quantity=" + quantity +
                ", unitPrice=" + unitPrice +
                ", href='" + href + '\'' +
