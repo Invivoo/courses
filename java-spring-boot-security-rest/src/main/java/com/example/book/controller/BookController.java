@@ -4,6 +4,7 @@ import com.example.book.model.Book;
 import com.example.book.service.AccountService;
 import com.example.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,17 +18,15 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Autowired
-    private AccountService accountService;
 
     @GetMapping(value = "/books")
-    public List<Book> listBooks() {
+    public ResponseEntity<List<Book>> listBooks() {
 
-        return this.bookService.listTasks();
+        return ResponseEntity.ok(this.bookService.listTasks());
     }
 
     @PostMapping(value = "/books")
-    public Book saveBook(@RequestBody Book t) {
-        return this.bookService.saveTask(t);
+    public ResponseEntity<Book> saveBook(@RequestBody Book t) {
+        return ResponseEntity.ok(this.bookService.saveTask(t));
     }
 }

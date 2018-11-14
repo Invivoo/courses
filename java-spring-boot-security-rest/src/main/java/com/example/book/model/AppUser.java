@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,7 +13,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AppUser {
+public class AppUser  implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;

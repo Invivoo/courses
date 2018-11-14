@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 
-public class AppRole {
+public class AppRole implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
