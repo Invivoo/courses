@@ -13,7 +13,8 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AppUser  implements Serializable {
+@Table(name = "AppUser")
+public class AppUser{
     @Id
     @GeneratedValue
     private Integer id;

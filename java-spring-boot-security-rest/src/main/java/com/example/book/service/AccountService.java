@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class AccountService {
 
     @Autowired
@@ -41,7 +44,10 @@ public class AccountService {
                 .orElseThrow(() -> new IllegalArgumentException("role not found"));
 
         user.getRoles().add(role);
-        appUserRepository.save(user);
+    }
+
+    public AppUser findUserByUsername(String userName) {
+        return appUserRepository.findByUserName(userName).orElse(new AppUser());
     }
 
 }

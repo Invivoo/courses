@@ -6,8 +6,6 @@ import com.example.book.model.Book;
 import com.example.book.repository.AppRoleRepository;
 import com.example.book.repository.AppUserRepository;
 import com.example.book.repository.BookRepository;
-import com.example.book.service.AccountService;
-import com.sun.tools.javac.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.List;
 
 @SpringBootApplication
 @EnableWebSecurity

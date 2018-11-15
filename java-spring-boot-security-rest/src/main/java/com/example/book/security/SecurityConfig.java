@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.formLogin();
         http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll();
-        http.authorizeRequests().antMatchers("/login/**").permitAll();
-        http.authorizeRequests().antMatchers("/console/**").permitAll();
+        http.authorizeRequests().antMatchers("/login/**", "/register/**").permitAll();
+        http.authorizeRequests().antMatchers("/h2/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
     }
