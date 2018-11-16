@@ -19,13 +19,13 @@ public class BookController {
     private BookService bookService;
 
 
-    @GetMapping(value = "/books")
+    @GetMapping("/books")
     public ResponseEntity<List<Book>> listBooks() {
 
         return ResponseEntity.ok(this.bookService.listTasks());
     }
 
-    @PostMapping(value = "/books")
+    @PostMapping("/books")
     public ResponseEntity<Book> saveBook(@RequestBody Book t) {
         return ResponseEntity.ok(this.bookService.saveTask(t));
     }

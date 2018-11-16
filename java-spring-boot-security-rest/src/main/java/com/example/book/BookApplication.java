@@ -46,8 +46,8 @@ public class BookApplication implements CommandLineRunner {
 
         List.of("T1", "T2","T3").forEach(t -> bookRepository.save(new Book(null, t)));
 
-        AppRole roleAdmin = appRoleRepository.save(new AppRole(null, "ADMIN"));
-        AppRole roleUser = appRoleRepository.save(new AppRole(null, "USER"));
+        AppRole roleAdmin = appRoleRepository.save(new AppRole(null, "ROLE_ADMIN"));
+        AppRole roleUser = appRoleRepository.save(new AppRole(null, "ROLE_USER"));
 
         AppUser admin = appUserRepository.save(new AppUser(null, "admin",
                 bCryptPasswordEncoder.encode("1234"), List.of(roleAdmin)));
