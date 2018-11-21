@@ -7,13 +7,17 @@ app:
 ---
 spring:
   profiles: log-debug
-logging.level.root: INFO
-logging.level.com.invivoo: DEBUG
-logging.level.org.springframework.web: WARN
-logging.level.org.hibernate.SQL: INFO
+
+logging.level:
+  root: INFO
+  com.invivoo.catalog.domain: DEBUG
+  com.invivoo.catalog.interfaces: DEBUG
+  org.springframework.web: WARN
+  org.hibernate.SQL: INFO
 
 ---
 spring:
   profiles: development
+spring.profiles.include: log-debug
 server:
   port: 9001
