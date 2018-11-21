@@ -14,7 +14,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AppRole")
 public class AppRole{
     @Id
     @GeneratedValue

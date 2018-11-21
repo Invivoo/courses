@@ -13,7 +13,6 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AppUser")
 public class AppUser{
     @Id
     @GeneratedValue

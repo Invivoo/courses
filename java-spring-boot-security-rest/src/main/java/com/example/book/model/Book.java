@@ -10,8 +10,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "Book")
+@AllArgsConstructor 
 public class Book {
 
     @Id
