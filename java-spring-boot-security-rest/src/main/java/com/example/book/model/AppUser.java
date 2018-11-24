@@ -13,7 +13,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AppUser{
+public class AppUser implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
@@ -24,6 +24,6 @@ public class AppUser{
     @Column
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<AppRole> roles = new ArrayList<>();
 }

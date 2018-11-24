@@ -18,7 +18,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@Import(BookService.class)
 public class AppUserRepositoryTest {
 
 

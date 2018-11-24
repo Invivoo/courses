@@ -13,12 +13,12 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> listTasks() {
+    public List<Book> listBooks() {
 
         return this.bookRepository.findAll();
     }
 
-    public Book saveTask(Book t) {
+    public Book saveBook(Book t) {
         return this.bookRepository.save(t);
     }
 }

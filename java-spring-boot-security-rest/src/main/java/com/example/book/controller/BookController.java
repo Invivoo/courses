@@ -22,11 +22,11 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<List<Book>> listBooks() {
 
-        return ResponseEntity.ok(this.bookService.listTasks());
+        return ResponseEntity.ok(this.bookService.listBooks());
     }
 
     @PostMapping("/books")
     public ResponseEntity<Book> saveBook(@RequestBody Book t) {
-        return ResponseEntity.ok(this.bookService.saveTask(t));
+        return ResponseEntity.ok(this.bookService.saveBook(t));
     }
 }

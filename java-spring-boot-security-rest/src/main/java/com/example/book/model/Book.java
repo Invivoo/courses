@@ -11,13 +11,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Data
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @AllArgsConstructor
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +32,13 @@ public class Book {
     private String createdBy;
 
     @CreatedDate
-    private String createdDate;
+    private LocalDate createdDate;
 
     @LastModifiedBy
     private String lastModifiedBy;
 
     @LastModifiedDate
-    private String lastModifiedDate;
+    private LocalDate lastModifiedDate;
 
     public Book(Integer id, String name) {
         this.id = id;

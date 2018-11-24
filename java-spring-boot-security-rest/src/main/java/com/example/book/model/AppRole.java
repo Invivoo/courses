@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AppRole{
+public class AppRole implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
