@@ -21,6 +21,7 @@ public class AppUser{
     @Column(unique = true)
     private String userName;
 
+    @Column
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

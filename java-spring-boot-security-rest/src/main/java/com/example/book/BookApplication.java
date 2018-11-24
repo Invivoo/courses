@@ -11,13 +11,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 @EnableWebSecurity
+@EnableJpaAuditing
 public class BookApplication implements CommandLineRunner {
 
     @Autowired
@@ -36,6 +40,10 @@ public class BookApplication implements CommandLineRunner {
         SpringApplication.run(BookApplication.class, args);
     }
 
+    @Bean
+    AuditorAware auditor() {
+       return  () -> Optional.of("admin");
+    }
     @Bean
     public BCryptPasswordEncoder cryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
