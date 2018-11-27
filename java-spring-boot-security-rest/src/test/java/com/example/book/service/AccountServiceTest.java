@@ -19,7 +19,6 @@ import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
 public class AccountServiceTest {
 
 

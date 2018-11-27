@@ -18,6 +18,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     AppUserRepository appUserRepository;
 
+
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 

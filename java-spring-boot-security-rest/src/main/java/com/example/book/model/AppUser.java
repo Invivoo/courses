@@ -15,7 +15,7 @@ import java.util.Collection;
 @Entity
 public class AppUser implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(unique = true)
