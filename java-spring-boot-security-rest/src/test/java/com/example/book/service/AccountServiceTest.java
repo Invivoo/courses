@@ -4,11 +4,12 @@ import com.example.book.model.AppRole;
 import com.example.book.model.AppUser;
 import com.example.book.repository.AppRoleRepository;
 import com.example.book.repository.AppUserRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -16,9 +17,11 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@ContextConfiguration
 public class AccountServiceTest {
 
 
@@ -28,8 +31,13 @@ public class AccountServiceTest {
     @MockBean
     private AppRoleRepository roleRepositoryMock;
 
-    @Autowired
     private AccountService accountService;
+
+    @Before
+    public void init() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        accountService = new AccountService(bCryptPasswordEncoder, userRepositoryMock, roleRepositoryMock);
+    }
 
 
     @Test
@@ -40,7 +48,8 @@ public class AccountServiceTest {
 
         accountService.addRoleToUser("admin", "ADMIN");
         assertThat(user.getRoles().size()).isEqualTo(1);
-
+        verify(userRepositoryMock, times(1)).findByUserName("admin");
+        verify(roleRepositoryMock, times(1)).findByRoleName("ADMIN");
     }
 
 

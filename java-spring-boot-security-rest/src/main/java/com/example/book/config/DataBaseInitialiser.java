@@ -37,16 +37,11 @@ public class DataBaseInitialiser implements CommandLineRunner {
         AppRole roleUser = appRoleRepository.save(new AppRole(null, "ROLE_USER"));
 
 
-        if (roleAdmin != null) {
-            AppUser admin = appUserRepository.save(new AppUser(null, "admin",
-                    bCryptPasswordEncoder.encode("1234"), List.of(roleAdmin)));
+        AppUser admin = appUserRepository.save(new AppUser(null, "admin",
+                bCryptPasswordEncoder.encode("1234"), List.of(roleAdmin)));
 
-        }
-
-        if (roleUser != null) {
-            AppUser user = appUserRepository.save(new AppUser(null, "user",
-                    bCryptPasswordEncoder.encode("1234"), List.of(roleUser)));
-        }
+        AppUser user = appUserRepository.save(new AppUser(null, "user",
+                bCryptPasswordEncoder.encode("1234"), List.of(roleUser)));
 
     }
 }

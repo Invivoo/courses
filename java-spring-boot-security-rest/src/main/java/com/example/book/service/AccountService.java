@@ -14,14 +14,20 @@ import javax.transaction.Transactional;
 @Transactional
 public class AccountService {
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    private final AppUserRepository appUserRepository;
+
+    private final AppRoleRepository appRoleRepository;
 
     @Autowired
-    private AppUserRepository appUserRepository;
-
-    @Autowired
-    private AppRoleRepository appRoleRepository;
+    public AccountService(BCryptPasswordEncoder passwordEncoder,
+                          AppUserRepository appUserRepository,
+                          AppRoleRepository appRoleRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.appUserRepository = appUserRepository;
+        this.appRoleRepository = appRoleRepository;
+    }
 
     public AppUser saveUser(AppUser user) {
         String password = passwordEncoder.encode(user.getPassword());
