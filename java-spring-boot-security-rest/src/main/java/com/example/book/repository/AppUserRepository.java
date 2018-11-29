@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
 
-    @Query("Select u from AppUser u join fetch u.roles where u.userName = ?1")
+    @Query("Select u from AppUser u left join fetch u.roles where u.userName = ?1")
     Optional<AppUser> findByUserName(String useName);
 }
