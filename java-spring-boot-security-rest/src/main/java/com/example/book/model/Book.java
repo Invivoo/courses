@@ -40,6 +40,9 @@ public class Book implements Serializable {
     @LastModifiedDate
     private LocalDate lastModifiedDate;
 
+    @Version
+    private Integer version;
+
     public Book(Integer id, String name) {
         this.id = id;
         this.name = name;
